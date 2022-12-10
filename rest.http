@@ -11,10 +11,22 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-    "name": "Osman",
-    "email": "osman.cekic@gmail.com"
+    "name": "Clément",
+    "email": "test.test@gmail.com"
 }
 
-### 6393972af7e7f5048aaae974
+### 
 
-GET http://localhost:3000/users/6393972af7e7f5048aaae
+GET http://localhost:3000/users/6394a7ba05bff3c5dac6e184
+
+###
+PATCH http://localhost:3000/users/6394a7ba05bff3c5dac6e184
+Content-Type: application/json
+
+{
+    "name": "Change"
+}
+
+###
+
+DELETE http://localhost:3000/users/6393973cf7e7f5048aaae977

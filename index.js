@@ -17,11 +17,10 @@ const UserRoute = require('./routes/User.route');
 app.use('/users', UserRoute);
 
 mongoose.set('strictQuery', false);
-mongoose.connect(process.env.MONGO_URL);
+mongoose.connect(process.env.MONGO_URL).
+  catch(error => console.log(error));
 
 // lancement de l'application
 app.listen(process.env.PORT, () => {
     console.log(`Application lancée sur le port ${process.env.PORT}`);
 });
-
-    

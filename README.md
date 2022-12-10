@@ -1,4 +1,9 @@
 ENV : 
 
 PORT=3000
-MONGO_URL=mongodb+srv://pbl3_db:DtZrRQETlAVDojiV@cluster0.tyfr3be.mongodb.net/?retryWrites=true&w=majority
+MONGO_URL=mongodb://127.0.0.1:27017/PBL3
+
+
+Lancement 
+
+mongod --port 27017 --dbpath C:\data\db
