@@ -1,10 +1,8 @@
-import mongoose from "mongoose";
-const User = require('../Models/User.model');
-
+// @ts-ignore
+import User from '../Models/User.model';
 const bcrypt = require('bcryptjs');
-
 const jwt = require('jsonwebtoken');
-const jwtKey = process.env.SECRET_KEY;
+const SECRET_KEY = process.env.SECRET_KEY;
 
 module.exports = {
   auth: async (req, res) => {
@@ -16,6 +14,16 @@ module.exports = {
       } else {
         bcrypt.compare(password, user.password).then(function (result) {
           if(result) {
+            delete user._doc.password;
+            const expireIn = 24 * 60 * 60;
+            const token    = jwt.sign({
+                  user: user
+                },
+                SECRET_KEY,
+                {
+                  expiresIn: expireIn
+                });
+            res.header('Authorization', 'Bearer ' + token);
             res.status(200).json({
               message: "Login successful",
               user,

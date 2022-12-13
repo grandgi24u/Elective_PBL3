@@ -8,22 +8,34 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const User = require('../Models/User.model');
+// @ts-ignore
+const User_model_1 = __importDefault(require("../Models/User.model"));
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const jwtKey = process.env.SECRET_KEY;
+const SECRET_KEY = process.env.SECRET_KEY;
 module.exports = {
     auth: (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         const { id, password } = req.body;
         try {
-            const user = yield User.findById(id);
+            const user = yield User_model_1.default.findById(id);
             if (!user) {
                 res.status(404).json({ message: "User not found" });
             }
             else {
                 bcrypt.compare(password, user.password).then(function (result) {
                     if (result) {
+                        delete user._doc.password;
+                        const expireIn = 24 * 60 * 60;
+                        const token = jwt.sign({
+                            user: user
+                        }, SECRET_KEY, {
+                            expiresIn: expireIn
+                        });
+                        res.header('Authorization', 'Bearer ' + token);
                         res.status(200).json({
                             message: "Login successful",
                             user,
@@ -41,7 +53,7 @@ module.exports = {
     }),
     getAllUsers: (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         try {
-            const results = yield User.find({});
+            const results = yield User_model_1.default.find({});
             res.send(results);
         }
         catch (error) {
@@ -50,7 +62,7 @@ module.exports = {
     }),
     createNewUser: (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         bcrypt.hash(req.body.password, 10).then((hash) => __awaiter(void 0, void 0, void 0, function* () {
-            yield User.create({
+            yield User_model_1.default.create({
                 name: req.body.name,
                 email: req.body.email,
                 password: hash,
@@ -66,7 +78,7 @@ module.exports = {
     findUserById: (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         const id = req.params.id;
         try {
-            const user = yield User.findById(id);
+            const user = yield User_model_1.default.findById(id);
             if (!user) {
                 res.status('404').json("Utilisateur inconnu");
             }
@@ -81,7 +93,7 @@ module.exports = {
             const id = req.params.id;
             const updates = req.body;
             const options = { new: true };
-            const result = yield User.findByIdAndUpdate(id, updates, options);
+            const result = yield User_model_1.default.findByIdAndUpdate(id, updates, options);
             if (!result) {
                 res.status('404').json("Utilisateur inconnu");
             }
@@ -94,7 +106,7 @@ module.exports = {
     deleteAnUser: (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         const id = req.params.id;
         try {
-            const result = yield User.findByIdAndDelete(id);
+            const result = yield User_model_1.default.findByIdAndDelete(id);
             if (!result) {
                 res.status('404').json("Utilisateur inconnu");
             }
