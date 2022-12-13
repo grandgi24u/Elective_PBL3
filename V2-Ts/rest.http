@@ -11,16 +11,28 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-    "name": "valentin",
-    "email": "test.test@gmail.com"
+    "name": "Clement",
+    "email": "test.test@gmail.com",
+    "password": "azerty123"
 }
+
+###
+
+POST http://localhost:3000/users/auth
+Content-Type: application/json
+
+{
+  "id": "63984f6ab951c301b885c56b",
+  "password": "azerty123"
+}
+
 
 ### 
 
-GET http://localhost:3000/users/6394a7ba05bff3c5dac6e184
+GET http://localhost:3000/users/6396daed8ff14add2baada33
 
 ###
-PATCH http://localhost:3000/users/6394c5306cb6926410bc911a
+PATCH http://localhost:3000/users/6396daed8ff14add2baada33
 Content-Type: application/json
 
 {
@@ -29,4 +41,4 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3000/users/6393973cf7e7f5048aaae977
+DELETE http://localhost:3000/users/6396daed8ff14add2baada33
