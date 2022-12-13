@@ -116,4 +116,13 @@ module.exports = {
             res.status('501').json(error);
         }
     }),
+    deleteAll: (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+        try {
+            const result = yield User_model_1.default.deleteMany({});
+            res.send(result);
+        }
+        catch (error) {
+            res.status('501').json(error);
+        }
+    }),
 };

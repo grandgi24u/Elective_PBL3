@@ -107,4 +107,13 @@ module.exports = {
       res.status('501').json(error);
     }
   },
+
+  deleteAll: async (req, res) => {
+    try {
+      const result = await User.deleteMany({});
+      res.send(result);
+    } catch (error) {
+      res.status('501').json(error);
+    }
+  },
 };

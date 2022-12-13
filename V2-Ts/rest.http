@@ -4,7 +4,7 @@ GET http://localhost:3000/
 ###
 
 GET http://localhost:3000/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYzOTg0ZjZhYjk1MWMzMDFiODg1YzU2YiIsIm5hbWUiOiJDbGVtZW50IiwiZW1haWwiOiJ0ZXN0LnRlc3RAZ21haWwuY29tIiwiX192IjowfSwiaWF0IjoxNjcwOTI3OTk3LCJleHAiOjE2NzEwMTQzOTd9.vGUJAQibVUPwh7qBYKymfBlExIO2iHvLiVv4u_78Jic
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYzOTg3YmNlZGUwYTdlOWZjMjBiNmEzOCIsIm5hbWUiOiJDbGVtZW50IiwiZW1haWwiOiJ0ZXN0LnRlc3RAZ21haWwuY29tIiwiX192IjowfSwiaWF0IjoxNjcwOTM3NTYwLCJleHAiOjE2NzEwMjM5NjB9.ljP76XjrM0zXlyV19WyyS85uGpWtSoLqfHt-mdMFXsg
 
 ###
 
@@ -14,20 +14,18 @@ Content-Type: application/json
 {
     "name": "Clement",
     "email": "test.test@gmail.com",
-    "password": "azerty123"
+    "password": "azerty1234"
 }
 
 ###
 
 POST http://localhost:3000/users/auth
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYzOTg0ZjZhYjk1MWMzMDFiODg1YzU2YiIsIm5hbWUiOiJDbGVtZW50IiwiZW1haWwiOiJ0ZXN0LnRlc3RAZ21haWwuY29tIiwiX192IjowfSwiaWF0IjoxNjcwOTI3OTk3LCJleHAiOjE2NzEwMTQzOTd9.vGUJAQibVUPwh7qBYKymfBlExIO2iHvLiVv4u_78Jic
 
 {
-  "id": "63984f6ab951c301b885c56b",
-  "password": "azerty123"
+  "id": "63987bcede0a7e9fc20b6a38",
+  "password": "azerty1234"
 }
-
 
 ### 
 
@@ -44,3 +42,8 @@ Content-Type: application/json
 ###
 
 DELETE http://localhost:3000/users/6396daed8ff14add2baada33
+
+###
+
+DELETE http://localhost:3000/users
+
