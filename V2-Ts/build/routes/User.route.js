@@ -17,7 +17,7 @@ const isValid = (req, res, next) => {
     }
     res.status(422).json({ errors: result.array() });
 };
-router.get('/', security.checkJWT, UserController.getAllUsers);
+router.get('/', UserController.getAllUsers);
 router.post('/', verificationOfPassword(), isValid, UserController.createNewUser);
 router.get('/:id', UserController.findUserById);
 router.patch('/:id', verificationOfPassword(), isValid, UserController.updateAnUser);

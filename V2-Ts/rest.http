@@ -4,7 +4,7 @@ GET http://localhost:3000/
 ###
 
 GET http://localhost:3000/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYzOTg3YmNlZGUwYTdlOWZjMjBiNmEzOCIsIm5hbWUiOiJDbGVtZW50IiwiZW1haWwiOiJ0ZXN0LnRlc3RAZ21haWwuY29tIiwiX192IjowfSwiaWF0IjoxNjcwOTM3NTYwLCJleHAiOjE2NzEwMjM5NjB9.ljP76XjrM0zXlyV19WyyS85uGpWtSoLqfHt-mdMFXsg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYzOTg4ZjAzMzA5YjM2ZWM5Mzg2ZjE4ZiIsIm5hbWUiOiJUZXN0IiwiZW1haWwiOiJ0ZXN0LnRlc3RAZ21haWwuY29tIiwiX192IjowfSwiaWF0IjoxNjcwOTQyNDk0LCJleHAiOjE2NzEwMjg4OTR9.7hStTPy6dDrqottmrJpOZJohR9M_h3qQ5OPKWNGXQ8o
 
 ###
 
@@ -12,7 +12,7 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-    "name": "Clement",
+    "name": "Test",
     "email": "test.test@gmail.com",
     "password": "azerty1234"
 }
@@ -23,7 +23,7 @@ POST http://localhost:3000/users/auth
 Content-Type: application/json
 
 {
-  "id": "63987bcede0a7e9fc20b6a38",
+  "id": "63988f03309b36ec9386f18f",
   "password": "azerty1234"
 }
 
