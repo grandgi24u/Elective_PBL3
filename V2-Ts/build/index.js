@@ -14,6 +14,8 @@ app.use(express_1.default.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
     res.status(200).json({ message: "ok" });
 });
+const cors = require('cors');
+app.use(cors({ origin: 'http://localhost:5173' }));
 const UserRoute = require('./routes/User.route');
 app.use('/users', UserRoute);
 mongoose.set('strictQuery', false);
